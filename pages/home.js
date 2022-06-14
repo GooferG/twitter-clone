@@ -1,5 +1,5 @@
 const { useSession } = require('next-auth/react');
-// import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import prisma from 'lib/prisma';
 import { getTweets } from 'lib/data.js';
 import NewTweet from 'components/NewTweet';
@@ -8,7 +8,7 @@ import Tweets from 'components/Tweets';
 export default function Home({ tweets }) {
   const { data: session, status } = useSession();
   const loading = status === 'loading';
-  // const router = useRouter();
+  const router = useRouter();
 
   if (loading) {
     return null;
@@ -16,6 +16,10 @@ export default function Home({ tweets }) {
 
   if (!session) {
     router.push('/');
+  }
+
+  if (session && !session.user.name) {
+    router.push('/setup');
   }
 
   return (
