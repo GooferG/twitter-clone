@@ -1,7 +1,6 @@
 //Define a post handler for the /api/tweet route
 import prisma from 'lib/prisma';
 import { getSession } from 'next-auth/react';
-import { useReducer } from 'react';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST' && req.method !== 'DELETE') {
@@ -55,7 +54,8 @@ export default async function handler(req, res) {
     await prisma.tweet.delete({
       where: { id },
     });
-    res.status(200).end;
+
+    res.status(200).end();
     return;
   }
 }
