@@ -11,6 +11,10 @@ export default function SingleTweet({ tweet, replies }) {
   const { data: session, status } = useSession();
   const router = useRouter();
 
+  if (typeof window !== 'undefined' && tweet.parent) {
+    router.push(`/${tweet.parent_data.author.name}/status/${tweet.parent}`);
+  }
+
   return (
     <div>
       {/* <div className="text-center">
@@ -22,7 +26,11 @@ export default function SingleTweet({ tweet, replies }) {
       <Tweet tweet={tweet} />
       <NewReply tweet={tweet} />
 
-      <Tweets tweets={replies} />
+      {session && session.user.email === tweet.author.email && (
+        <div className="flex-1 py-2 m-2 text-center"></div>
+      )}
+
+      <Tweets tweets={replies} nolink={true} />
 
       {session && session.user.email === tweet.author.email && (
         <div className="">

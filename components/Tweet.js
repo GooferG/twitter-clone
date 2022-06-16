@@ -29,11 +29,15 @@ export default function Tweet({ tweet, nolink }) {
                   </a>
                 </Link>
                 <span className="pl-1 text-sm font-light leading-5 color-dimmed">
-                  <Link href={`/${tweet.author.name}/status/${tweet.id}`}>
-                    <a className="hover:underline">
-                      {timeago.format(new Date(tweet.createdAt))}
-                    </a>
-                  </Link>
+                  {nolink ? (
+                    <span>{timeago.format(new Date(tweet.createdAt))}</span>
+                  ) : (
+                    <Link href={`/${tweet.author.name}/status/${tweet.id}`}>
+                      <a className="hover:underline">
+                        {timeago.format(new Date(tweet.createdAt))}
+                      </a>
+                    </Link>
+                  )}
                 </span>
               </p>
             </div>

@@ -1,6 +1,6 @@
 import Tweet from 'components/Tweet';
 
-export default function Tweets({ tweets }) {
+export default function Tweets({ tweets, nolink }) {
   if (!tweets) return null;
 
   return (
