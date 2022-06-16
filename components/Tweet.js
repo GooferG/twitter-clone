@@ -2,7 +2,7 @@ import Image from 'next/image';
 import timeago from 'lib/timeago';
 import Link from 'next/link';
 
-export default function Tweet({ tweet }) {
+export default function Tweet({ tweet, nolink }) {
   return (
     <div className="mb-4">
       <div className="flex flex-shrink-0 p-4 pb-0">

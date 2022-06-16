@@ -15,6 +15,10 @@ a {
   box-sizing: border-box;
 }
 
+:root {
+  color-scheme: light dark;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -1,22 +1,29 @@
-import { getTweet } from 'lib/data';
-import prisma from 'lib/prisma';
 import Tweet from 'components/Tweet';
+import Tweets from 'components/Tweets';
+import NewReply from 'components/NewReply';
+
+import { getTweet, getReplies } from 'lib/data';
+import prisma from 'lib/prisma';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 
-export default function SingleTweet({ tweet }) {
+export default function SingleTweet({ tweet, replies }) {
   const { data: session, status } = useSession();
   const router = useRouter();
 
   return (
     <div>
-      <div className="text-center">
+      {/* <div className="text-center">
         <a href="/home" className="text-blue-600 font-bold">
           Home
         </a>
       </div>
-      <p className="text-center text-blue-400 font-bold">Single Tweet View</p>
+      <p className="text-center text-blue-400 font-bold">Single Tweet View</p> */}
       <Tweet tweet={tweet} />
+      <NewReply tweet={tweet} />
+
+      <Tweets tweets={replies} />
+
       {session && session.user.email === tweet.author.email && (
         <div className="">
           <a
@@ -53,9 +60,13 @@ export async function getServerSideProps({ params }) {
   let tweet = await getTweet(params.id, prisma);
   tweet = JSON.parse(JSON.stringify(tweet));
 
+  let replies = await getReplies(params.id, prisma);
+  replies = JSON.parse(JSON.stringify(replies));
+
   return {
     props: {
       tweet,
+      replies,
     },
   };
 }

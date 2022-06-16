@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 export default function NewReply({ tweet }) {
   const router = useRouter();
@@ -10,15 +10,13 @@ export default function NewReply({ tweet }) {
       className="flex ml-2"
       onSubmit={async (e) => {
         e.preventDefault();
-
         if (!reply) {
-          alert('Enter some text in the reply!');
+          alert('Enter some text in the reply');
           return;
         }
-
-        const res = await fetch('api/tweet', {
+        const res = await fetch('/api/tweet', {
           body: JSON.stringify({
-            parent: tweet.id,
+            parent: tweet?.id,
             content: reply,
           }),
           headers: {
