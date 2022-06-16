@@ -6,7 +6,7 @@ export default function Tweets({ tweets, nolink }) {
   return (
     <>
       {tweets.map((tweet, index) => (
-        <Tweet key={index} tweet={tweet} />
+        <Tweet key={index} tweet={tweet} nolink={nolink} />
       ))}
     </>
   );

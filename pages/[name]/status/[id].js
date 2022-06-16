@@ -17,12 +17,12 @@ export default function SingleTweet({ tweet, replies }) {
 
   return (
     <div>
-      {/* <div className="text-center">
+      <div className="text-center">
         <a href="/home" className="text-blue-600 font-bold">
           Home
         </a>
       </div>
-      <p className="text-center text-blue-400 font-bold">Single Tweet View</p> */}
+      <p className="text-center text-blue-400 font-bold">Single Tweet View</p>
       <Tweet tweet={tweet} />
       <NewReply tweet={tweet} />
 
