@@ -2,6 +2,7 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 
 import prisma from 'lib/prisma';
+
 import { getTweets } from 'lib/data';
 import Tweets from 'components/Tweets';
 
@@ -22,7 +23,7 @@ export default function Index({ tweets }) {
       <h1 className="text-center mt-4 font-black text-blue-600 text-xl">
         Welcome to Twitcher
       </h1>
-      <Tweets tweets={tweets} />
+      <Tweets tweets={tweets} nolink={true} />
       <p className="text-center p-4 border m-4">
         <p className="font-black text-blue-600">You are not logged in!</p>
         <h2 className="mb-10">Join the conversation</h2>
@@ -40,8 +41,6 @@ export default function Index({ tweets }) {
 export async function getServerSideProps() {
   const take = 3;
   let tweets = await getTweets(prisma, take);
-  tweets = JSON.parse(JSON.stringify(tweets));
-
   tweets = JSON.parse(JSON.stringify(tweets));
   return {
     props: {

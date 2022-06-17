@@ -16,7 +16,7 @@ export default function NewReply({ tweet }) {
         }
         const res = await fetch('/api/tweet', {
           body: JSON.stringify({
-            parent: tweet?.id,
+            parent: tweet.id,
             content: reply,
           }),
           headers: {
