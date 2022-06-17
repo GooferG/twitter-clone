@@ -1,5 +1,6 @@
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
+
 import prisma from 'lib/prisma';
 import { getTweets } from 'lib/data';
 import Tweets from 'components/Tweets';
