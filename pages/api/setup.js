@@ -12,6 +12,14 @@ export default async function handler(req, res) {
         name: req.body.name,
       },
     });
-    res.end();
+    if (!userExists.length) {
+      await prisma.user.update({
+        where: { email: session.user.email },
+        data: {
+          name: req.body.name,
+        },
+      });
+      return res.status(201).end();
+    }
   }
 }

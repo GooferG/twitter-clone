@@ -1,5 +1,5 @@
-import { useState } from 'react';
 const { useSession } = require('next-auth/react');
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import prisma from 'lib/prisma';
 import { getTweets } from 'lib/data.js';

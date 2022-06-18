@@ -23,7 +23,7 @@ export default function Index({ tweets }) {
       <h1 className="text-center mt-4 font-black text-blue-600 text-xl">
         Welcome to Twitcher
       </h1>
-      <Tweets tweets={tweets} nolink={true} />
+      <Tweets tweets={tweets} />
       <p className="text-center p-4 border m-4">
         <p className="font-black text-blue-600">You are not logged in!</p>
         <h2 className="mb-10">Join the conversation</h2>
