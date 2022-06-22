@@ -53,7 +53,7 @@ export default function NewTweet({ tweets, setTweets }) {
       </div>
       <div className="flex">
         <div className="flex-1 mb-5">
-          <button className="border float-right px-8 py-2 mt-0 mr-2 font-bold rounded-full">
+          <button className="border float-right px-8 py-2 mt-0 mr-2 font-bold rounded-full bg-blue-500 hover:bg-blue-600">
             Tweet
           </button>
         </div>

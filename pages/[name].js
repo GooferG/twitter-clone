@@ -1,14 +1,15 @@
 import prisma from 'lib/prisma';
 import { getUserTweets } from 'lib/data.js';
 import Tweets from 'components/Tweets';
+import Link from 'next/link';
 
 export default function UserProfile({ name, tweets }) {
   return (
     <>
       <div className="text-center">
-        <a href="/home" className="text-blue-600 font-bold">
-          Home
-        </a>
+        <Link href="/home">
+          <a className="text-blue-600 font-bold">Home</a>
+        </Link>
       </div>
 
       <p className="text-center p-5"> User profile of {name}</p>
