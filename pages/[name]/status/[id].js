@@ -1,6 +1,7 @@
 import Tweet from 'components/Tweet';
 import Tweets from 'components/Tweets';
 import NewReply from 'components/NewReply';
+import Link from 'next/link';
 
 import { getTweet, getReplies } from 'lib/data';
 import prisma from 'lib/prisma';
@@ -18,9 +19,9 @@ export default function SingleTweet({ tweet, replies }) {
   return (
     <div>
       <div className="text-center">
-        <a href="/home" className="text-blue-600 font-bold">
-          Home
-        </a>
+        <Link href="/home">
+          <a className="text-blue-600 font-bold">Home</a>
+        </Link>
       </div>
       <p className="text-center text-blue-400 font-bold">Single Tweet View</p>
       <Tweet tweet={tweet} />
