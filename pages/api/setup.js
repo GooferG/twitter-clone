@@ -1,5 +1,6 @@
 import prisma from 'lib/prisma';
 import { getSession } from 'next-auth/react';
+import { faker } from '@faker-js/faker';
 
 export default async function handler(req, res) {
   const session = await getSession({ req });
@@ -10,6 +11,7 @@ export default async function handler(req, res) {
       where: { email: session.user.email },
       data: {
         name: req.body.name,
+        image: faker.internet.avatar(),
       },
     });
 
